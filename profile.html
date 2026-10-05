@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profile | NestControl</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-auth="required">
+
+<div class="app-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon"><i class="fa-solid fa-house-signal"></i></div>
+      <span class="brand-name">NestControl</span>
+      <button class="sidebar-close" id="sidebarClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <i class="fa-solid fa-gauge-high"></i><span>Dashboard</span>
+      </a>
+      <a href="rooms.html" class="nav-item">
+        <i class="fa-solid fa-door-open"></i><span>Rooms</span>
+      </a>
+      <a href="devices.html" class="nav-item">
+        <i class="fa-solid fa-lightbulb"></i><span>Devices</span>
+      </a>
+      <a href="energy.html" class="nav-item">
+        <i class="fa-solid fa-bolt"></i><span>Energy</span>
+      </a>
+      <a href="environment.html" class="nav-item">
+        <i class="fa-solid fa-temperature-half"></i><span>Environment</span>
+      </a>
+      <a href="security.html" class="nav-item">
+        <i class="fa-solid fa-shield-halved"></i><span>Security</span>
+      </a>
+      <a href="automation.html" class="nav-item">
+        <i class="fa-solid fa-gears"></i><span>Automations</span>
+      </a>
+      <a href="history.html" class="nav-item">
+        <i class="fa-solid fa-clock-rotate-left"></i><span>Activity</span>
+      </a>
+      <a href="notifications.html" class="nav-item" id="navNotifications">
+        <i class="fa-solid fa-bell"></i><span>Notifications</span>
+      </a>
+      <a href="profile.html" class="nav-item active">
+        <i class="fa-solid fa-user"></i><span>Profile</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="login.html" class="nav-item logout-link">
+        <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main content -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <button class="hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-title">Profile</div>
+
+      <div class="topbar-actions">
+        <div class="notif-wrapper">
+          <button class="icon-btn" id="notifBtn">
+            <i class="fa-solid fa-bell"></i>
+          </button>
+          <div class="notif-dropdown" id="notifDropdown">
+            <div class="notif-dropdown-header">Notifications</div>
+            <div class="notif-dropdown-body" id="notifDropdownBody">
+              <div class="empty-mini">Loading...</div>
+            </div>
+            <a href="notifications.html" class="notif-dropdown-footer">View all</a>
+          </div>
+        </div>
+
+        <a href="profile.html" class="user-chip">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <span class="user-name" id="userNameLabel"></span>
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+      <div id="flashHost"></div>
+<div class="page-heading">
+  <h1>Profile</h1>
+  <p>Manage your account information and security settings.</p>
+</div>
+
+<div class="profile-header-card">
+  <div class="profile-avatar-lg" id="profileAvatar">U</div>
+  <div>
+    <h2 id="profileName"></h2>
+    <p id="profileEmail"></p>
+    <span class="badge badge-muted" id="profileSince"></span>
+  </div>
+</div>
+
+<div class="chart-grid">
+  <div class="card">
+    <h3>Edit Profile</h3>
+    <form id="nameForm">
+      <div class="form-group">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" required minlength="2">
+      </div>
+      <div class="form-group">
+        <label>Email address</label>
+        <input type="email" id="emailDisabled" disabled>
+      </div>
+      <button type="submit" class="btn-primary">Save Changes</button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Change Password</h3>
+    <form id="passwordForm">
+      <div class="form-group">
+        <label for="current_password">Current password</label>
+        <input type="password" id="current_password" name="current_password" required>
+      </div>
+      <div class="form-group">
+        <label for="new_password">New password</label>
+        <input type="password" id="new_password" name="new_password" required minlength="6">
+      </div>
+      <div class="form-group">
+        <label for="confirm_new_password">Confirm new password</label>
+        <input type="password" id="confirm_new_password" name="confirm_new_password" required minlength="6">
+      </div>
+      <button type="submit" class="btn-primary">Update Password</button>
+    </form>
+  </div>
+</div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+<script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | NestControl</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-auth="required">
+
+<div class="app-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-icon"><i class="fa-solid fa-house-signal"></i></div>
+      <span class="brand-name">NestControl</span>
+      <button class="sidebar-close" id="sidebarClose"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item active">
+        <i class="fa-solid fa-gauge-high"></i><span>Dashboard</span>
+      </a>
+      <a href="rooms.html" class="nav-item">
+        <i class="fa-solid fa-door-open"></i><span>Rooms</span>
+      </a>
+      <a href="devices.html" class="nav-item">
+        <i class="fa-solid fa-lightbulb"></i><span>Devices</span>
+      </a>
+      <a href="energy.html" class="nav-item">
+        <i class="fa-solid fa-bolt"></i><span>Energy</span>
+      </a>
+      <a href="environment.html" class="nav-item">
+        <i class="fa-solid fa-temperature-half"></i><span>Environment</span>
+      </a>
+      <a href="security.html" class="nav-item">
+        <i class="fa-solid fa-shield-halved"></i><span>Security</span>
+      </a>
+      <a href="automation.html" class="nav-item">
+        <i class="fa-solid fa-gears"></i><span>Automations</span>
+      </a>
+      <a href="history.html" class="nav-item">
+        <i class="fa-solid fa-clock-rotate-left"></i><span>Activity</span>
+      </a>
+      <a href="notifications.html" class="nav-item" id="navNotifications">
+        <i class="fa-solid fa-bell"></i><span>Notifications</span>
+      </a>
+      <a href="profile.html" class="nav-item">
+        <i class="fa-solid fa-user"></i><span>Profile</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="login.html" class="nav-item logout-link">
+        <i class="fa-solid fa-right-from-bracket"></i><span>Logout</span>
+      </a>
+    </div>
+  </aside>
+
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- Main content -->
+  <div class="main-wrapper">
+    <header class="topbar">
+      <button class="hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+      <div class="topbar-title">Dashboard</div>
+
+      <div class="topbar-actions">
+        <div class="notif-wrapper">
+          <button class="icon-btn" id="notifBtn">
+            <i class="fa-solid fa-bell"></i>
+          </button>
+          <div class="notif-dropdown" id="notifDropdown">
+            <div class="notif-dropdown-header">Notifications</div>
+            <div class="notif-dropdown-body" id="notifDropdownBody">
+              <div class="empty-mini">Loading...</div>
+            </div>
+            <a href="notifications.html" class="notif-dropdown-footer">View all</a>
+          </div>
+        </div>
+
+        <a href="profile.html" class="user-chip">
+          <div class="user-avatar" id="userAvatar">U</div>
+          <span class="user-name" id="userNameLabel"></span>
+        </a>
+      </div>
+    </header>
+
+    <main class="content">
+      <div id="flashHost"></div>
+
+<div class="page-heading">
+  <h1 id="greetingTitle">Welcome 👋</h1>
+  <p>Here's what's happening at your home today.</p>
+</div>
+
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-icon blue"><i class="fa-solid fa-microchip"></i></div>
+    <div class="stat-info">
+      <span class="stat-value" id="statTotal">0</span>
+      <span class="stat-label">Total Devices</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon green"><i class="fa-solid fa-signal"></i></div>
+    <div class="stat-info">
+      <span class="stat-value" id="statOnline">0/0</span>
+      <span class="stat-label">Devices Online</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon orange"><i class="fa-solid fa-bolt"></i></div>
+    <div class="stat-info">
+      <span class="stat-value" id="statEnergy">0 kWh</span>
+      <span class="stat-label">Energy Usage Today</span>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon green" id="statSecurityIcon">
+      <i class="fa-solid fa-shield-halved"></i>
+    </div>
+    <div class="stat-info">
+      <span class="stat-value" id="statSecurity">Armed</span>
+      <span class="stat-label">Security Status</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-header">
+  <h2>Quick Device Control</h2>
+  <a href="devices.html" class="link-muted">Manage all devices <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<div class="device-grid" id="deviceGrid"></div>
+
+<div class="section-header">
+  <h2>Recent Activity</h2>
+  <a href="history.html" class="link-muted">View all <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+
+<div class="card" id="recentActivity"></div>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast-stack" id="toastStack"></div>
+
+<script src="js/store.js"></script>
+<script src="js/app.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
